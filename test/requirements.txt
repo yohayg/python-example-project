@@ -1,4 +1,4 @@
 nose
 mockito
 Faker
-python-coveralls
+coveralls

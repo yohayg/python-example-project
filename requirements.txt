@@ -1,5 +1,5 @@
 Faker==0.8.13
-pytest==2.9.1
+pytest==3.5.0
 mockito==1.0.12
 nose==1.3.7
 tornado==5.0.2

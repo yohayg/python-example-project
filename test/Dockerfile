@@ -1,6 +1,9 @@
 FROM  python:2.7-alpine
 
-COPY requirements.txt /tmp/requirements.txt
-RUN  pip install -r /tmp/requirements.txt
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-CMD ["python", "/src/project/tests"]
+COPY requirements.txt /tmp/requirements.txt
+RUN  pip install --no-cache-dir -r /tmp/requirements.txt
+
+CMD ["python", "./project/tests"]

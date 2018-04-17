@@ -1,8 +1,11 @@
-from process import Process
 import csv
+import os
 import sys
 import time
+
 from faker import Faker
+
+from process import Process
 
 
 class Project:
@@ -16,7 +19,7 @@ class Project:
 
     def _get_date(self):
         # prints stdout of subprocess with command "date"
-        # strips tailing endoflines because print adds one
+        # strips tailing end of lines because print adds one
         return self.process.execute("date").rstrip('\n')
 
     def print_example_arg(self):
@@ -38,20 +41,36 @@ class Project:
 
     def generate_leads(self, total, output_file):
 
+        if output_file is None:
+            return None
+        else:
+            outfile = open(output_file, 'w+')
+            res = self.generate_leads_file(total, outfile)
+            outfile.close()
+            return res
+
+    def generate_leads_file(self, total, outfile):
+
         fake = Faker()
         start_time = time.time()
 
-        print 'Generating ', total, ' leads. Output file:', output_file
+        result = None
+        outfile_writer = None
+        if outfile is None:
+            print 'Generating ', total, ' leads.'
+            result = []
+        else:
+            print 'Generating ', total, ' leads. Output file:', os.path.abspath(outfile.name)
+            outfile_writer = csv.writer(outfile, delimiter=',')
+
         print ''
-
-        outfile = open(output_file, 'w+')
-
-        outfile_writer = csv.writer(outfile, delimiter=',')
 
         header = ['Email', 'First Name', 'Last Name']
 
-        outfile_writer.writerow(header)
-
+        if outfile is None:
+            result.append(header)
+        else:
+            outfile_writer.writerow(header)
 
         bulk_lines = []
         bulk_size = 1000
@@ -68,13 +87,17 @@ class Project:
             elapsed_time_str = str(time.strftime("%H:%M:%S", time.gmtime(elapsed_time)))
             self.progress(i, total, status=elapsed_time_str)
             bulk_lines.append(line)
+            if outfile is None:
+                result.append(line)
+
             if len(bulk_lines) == bulk_size:
                 outfile_writer.writerows(bulk_lines)
                 bulk_lines = []
 
         # write the rest
         if len(bulk_lines) > 0:
-            outfile_writer.writerows(bulk_lines)
+            if outfile is not None:
+                outfile_writer.writerows(bulk_lines)
         self.progress(total, total, status='done')
 
-        outfile.close()
+        return result

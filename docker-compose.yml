@@ -6,3 +6,9 @@ services:
       - type: bind
         source: .
         target: /usr/src/app
+  test:
+    build: test
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/src/app

@@ -1,6 +1,6 @@
 ## Introduction
 
-This project is an example for a python command-line application structure with a unit testing framework.
+This project is a python command-line application example of generating data to csv.
 
 ## Prerequisites
 

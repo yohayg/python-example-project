@@ -1,4 +1,9 @@
+
+
+
 ## Introduction
+
+[![Build Status](https://travis-ci.org/yohayg/python-generator.svg?branch=master)](https://travis-ci.org/yohayg/python-generator)
 
 This project is a python command-line application example of generating data to csv.
 

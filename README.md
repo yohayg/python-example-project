@@ -8,4 +8,5 @@ This project is an example for a python command-line application structure with 
 
 ## Running the Application
 
+    git clone https://github.com/yohayg/python-example-project.git
     docker-compose run generator 1000 1000.csv

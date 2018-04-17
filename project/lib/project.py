@@ -14,17 +14,6 @@ class Project:
         self.options = options
         self.process = Process()
 
-    def date(self):
-        return self._get_date()
-
-    def _get_date(self):
-        # prints stdout of subprocess with command "date"
-        # strips tailing end of lines because print adds one
-        return self.process.execute("date").rstrip('\n')
-
-    def print_example_arg(self):
-        return self.options.known.example
-
     @staticmethod
     def progress(count, total_number, status=''):
 
@@ -49,7 +38,7 @@ class Project:
             outfile.close()
             return res
 
-    def generate_leads_file(self, total, outfile):
+    def generate_leads_file(self, total, outfile, bulk_size=1000):
 
         fake = Faker()
         start_time = time.time()
@@ -73,7 +62,7 @@ class Project:
             outfile_writer.writerow(header)
 
         bulk_lines = []
-        bulk_size = 1000
+
         for i in range(total):
 
             first = str(fake.first_name())

@@ -8,9 +8,4 @@ This project is an example for a python command-line application structure with 
 
 ## Running the Application
 
-    docker-compose build
-    docker-compose run project <command line arguments>
-
-## Testing
-
-    docker-compose run test
+    docker-compose run generator 1000 1000.csv

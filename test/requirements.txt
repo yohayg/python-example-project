@@ -1,3 +1,4 @@
 nose
 mockito
-Faker==0.8.13
+Faker
+python-coveralls

@@ -6,4 +6,6 @@ install:
   - pip install -r ./test/requirements.txt
 # command to run tests
 script:
-  - python ./project/tests # or py.test for Python versions 3.5 and below
+  - coverage ./project/tests # or py.test for Python versions 3.5 and below
+after_success:
+  - coveralls

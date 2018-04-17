@@ -6,4 +6,5 @@ WORKDIR /usr/src/app
 COPY requirements.txt /tmp/requirements.txt
 RUN  pip install --no-cache-dir -r /tmp/requirements.txt
 
-CMD ["python", "./project/tests"]
+#CMD ["python", "./project/tests"]
+CMD ["coverage", "run", "./project/tests"]

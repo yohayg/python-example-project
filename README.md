@@ -1,9 +1,9 @@
 
 
+[![Coverage Status](https://coveralls.io/repos/github/yohayg/python-generator/badge.svg)](https://coveralls.io/github/yohayg/python-generator)
+[![Build Status](https://travis-ci.org/yohayg/python-generator.svg?branch=master)](https://travis-ci.org/yohayg/python-generator)
 
 ## Introduction
-
-[![Build Status](https://travis-ci.org/yohayg/python-generator.svg?branch=master)](https://travis-ci.org/yohayg/python-generator)
 
 This project is a python command-line application example of generating data to csv.
 

@@ -1,0 +1,3 @@
+[run]
+include =
+    */lib/project.py

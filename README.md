@@ -26,6 +26,10 @@ Or install:
     pip install -e .
     csv-gen generate -r 1000 -o 1000.csv -b 1000 --verbose
 
+
+##Example
+
+![Alt Text](https://raw.githubusercontent.com/yohayg/python-generator/master/demo.gif)
     
 ## License
 

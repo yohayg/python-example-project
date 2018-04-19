@@ -89,7 +89,7 @@ class CsvGenerator(cmdln.Cmdln):
 
         bulk_lines = []
 
-        progress_bar = Bar('Loading', fill='#', suffix='%(percent)d%% - %(elapsed_td)s', max=total)
+        progress_bar = Bar('Generating', fill='#', suffix='%(percent)d%% - %(elapsed_td)s', max=total)
 
         for i in range(total):
 

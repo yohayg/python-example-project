@@ -29,7 +29,7 @@ Or install:
 
 ##Example
 
-![Alt Text](https://raw.githubusercontent.com/yohayg/python-generator/master/demo.gif)
+![Alt Text](https://raw.githubusercontent.com/yohayg/python-generator/master/docs/images/demo.gif)
     
 ## License
 

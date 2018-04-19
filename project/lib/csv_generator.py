@@ -20,20 +20,6 @@ RE_INT = re.compile(r'^([1-9]\d*|0)$')
 class CsvGenerator(cmdln.Cmdln):
     name = "csv-gen"
 
-    @cmdln.alias("stat", "st")
-    @cmdln.option("-u", "--show-updates", action="store_true",
-                  help="display update information")
-    @cmdln.option("-v", "--verbose", action="store_true",
-                  help="print extra information")
-    def do_status(self, sub_cmd, opts, *paths):
-        """${cmd_name}: print the status of working copy files and directories
-
-        ${cmd_usage}
-        ${cmd_option_list}
-        """
-        print("'svn %s' opts:  %s" % (sub_cmd, opts))
-        print("'svn %s' paths: %s" % (sub_cmd, paths))
-
     @cmdln.alias("generate", "g")
     @cmdln.option("-o", "--output", action="store",
                   help="the output file", dest="output")

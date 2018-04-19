@@ -46,6 +46,19 @@ class TestProject(unittest.TestCase):
         except OSError:
             pass
 
+    def test_project_should_generate_leads_file_main_method(self):
+        Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
+
+        file_name = "2.csv"
+        sys.argv = ["generate", "generate", "-r", "2", "-o", file_name, "-b", "1000", "--verbose"]
+        res = self.csv_generator.main()
+        assert res is None
+        os.path.isfile(file_name)
+        try:
+            os.remove(os.path.abspath(file_name))
+        except OSError:
+            pass
+
     def test_project_should_generate_leads_file_null_response(self):
         Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
         file_name = '2.csv'

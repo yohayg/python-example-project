@@ -24,7 +24,7 @@ Run:
 Or install:
     
     pip install -e .
-    csv-gen -r 1000 -o 1000.csv -b 1000 --verbose
+    csv-gen generate -r 1000 -o 1000.csv -b 1000 --verbose
 
     
 ## License

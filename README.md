@@ -27,7 +27,7 @@ Or install:
     csv-gen generate -r 1000 -o 1000.csv -b 1000 --verbose
 
 
-##Example
+## Example
 
 ![Alt Text](https://raw.githubusercontent.com/yohayg/python-generator/master/docs/images/demo.gif)
     

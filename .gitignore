@@ -2,3 +2,7 @@
 .idea
 *.pyc
 .coverage
+dist
+build
+.eggs
+*.egg-info

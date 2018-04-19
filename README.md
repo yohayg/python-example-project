@@ -14,5 +14,19 @@ This project is a python command-line application example of generating data to 
 
 ## Running the Application
 
+Clone:
+
     git clone https://github.com/yohayg/python-example-project.git
-    docker-compose run generator 1000 1000.csv
+    
+Run:
+
+    docker-compose run csv-gen -r 1000 -o 1000.csv -b 1000 --verbose
+Or install:
+    
+    pip install -e .
+    csv-gen -r 1000 -o 1000.csv -b 1000 --verbose
+
+    
+## License
+
+This project is licensed under [MIT license](http://opensource.org/licenses/MIT).    

@@ -1,13 +1,15 @@
 # External
-import subprocess # module for running subprocesses from python
-import shlex # lexical analysis for splitting command like shell
+import shlex  # lexical analysis for splitting command like shell
+import subprocess  # module for running sub processes from python
+
 
 class Process:
 
     def __init__(self):
         pass
 
-    def execute(self, command):
+    @staticmethod
+    def execute(command):
         process = subprocess.Popen(shlex.split(command),
                                    stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE)
@@ -15,6 +17,7 @@ class Process:
         if process.returncode:
             raise ProcessException(process.returncode)
         return out
+
 
 class ProcessException(Exception):
 

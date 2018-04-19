@@ -1,3 +1,3 @@
 [run]
 include =
-    */lib/project.py
+    */lib/csv_generator.py

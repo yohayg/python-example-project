@@ -18,4 +18,4 @@ RUN apk --update add --virtual build-dependencies libffi-dev openssl-dev python-
 #RUN pip install --no-cache-dir -r /tmp/requirements.txt
 #RUN python setup.py install
 #CMD ["python", "./project/tests"]
-#CMD ["coverage", "run", "setup.py test"]
+CMD ["coverage", "run", "setup.py,", "nosetests"]

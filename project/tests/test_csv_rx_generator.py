@@ -4,13 +4,14 @@ import os
 import sys
 import time
 import unittest
+import nose
 from StringIO import StringIO
 from contextlib import contextmanager
 
 from project.lib.csv_rx_generator import CsvRxGenerator
 
 
-class TestProject(unittest.TestCase):
+class TestCsvRxGenerator(unittest.TestCase):
 
     def setUp(self):
         self.csv_rx_generator = CsvRxGenerator()
@@ -19,7 +20,7 @@ class TestProject(unittest.TestCase):
         lines = 12
         file_name = str(lines) + '.csv'
         outfile = open(file_name, 'w+')
-        self.csv_rx_generator.generate_leads_file(lines, outfile, 10)
+        CsvRxGenerator.generate_leads_file(lines, outfile)
         # outfile.close()
         time.sleep(5)
         outfile.close()
@@ -32,6 +33,7 @@ class TestProject(unittest.TestCase):
             pass
 
     def check_file_content(self, lines, file_name):
+        print("checking file content at: "+file_name)
         with open(os.path.abspath(file_name)) as res:
             reader = csv.DictReader(res, delimiter=',')
             header = reader.fieldnames
@@ -146,4 +148,4 @@ def captured_output():
 
 
 if __name__ == '__main__':
-    unittest.main()
+    nose.run()

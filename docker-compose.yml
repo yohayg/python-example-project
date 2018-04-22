@@ -15,6 +15,6 @@ services:
     build: test
     volumes:
       - type: bind
-        source: ../
+        source: .
         target: /usr/src/app
-    command: ["coverage", "run", "setup.py", "test"]
+    command: ["coverage", "run", "setup.py", "nosetests"]

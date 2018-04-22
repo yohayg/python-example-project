@@ -6,7 +6,6 @@ https://github.com/pypa/sampleproject
 """
 
 # To use a consistent encoding
-import unittest
 from codecs import open
 from os import path
 
@@ -20,10 +19,10 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 
-def my_test_suite():
-    test_loader = unittest.TestLoader()
-    test_suite = test_loader.discover('project.tests', pattern='test_*.py')
-    return test_suite
+# def my_test_suite():
+#     test_loader = unittest.TestLoader()
+#     test_suite = test_loader.discover('project.tests', pattern='test_*.py')
+#     return test_suite
 
 
 # Arguments marked as "Required" below must be included for upload to PyPI.
@@ -138,6 +137,7 @@ setup(
     # Any package you put here will be installed by pip when your project is
     # installed, so they must be valid existing projects.
     #
+    setup_requires=['nose', 'coveralls'],
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['Faker==0.8.13', 'mockito==1.0.12', 'nose==1.3.7',
@@ -157,7 +157,8 @@ setup(
     },
 
     # test_suite="project.tests",
-    test_suite='setup.my_test_suite',
+    # test_suite='setup.my_test_suite',
+    test_suite='nose.collector',
     # If there are data files included in your packages that need to be
     # installed, specify them here.
     #
@@ -202,5 +203,5 @@ setup(
         'Funding': 'https://donate.pypi.org',
         'Say Thanks!': 'http://saythanks.io/to/example',
         'Source': 'https://github.com/yohayg/python-generator/'
-    },
+    }
 )

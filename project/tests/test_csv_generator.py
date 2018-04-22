@@ -1,6 +1,8 @@
 import collections
 import csv
 import os
+
+import nose
 import sys
 import unittest
 from StringIO import StringIO
@@ -9,7 +11,7 @@ from contextlib import contextmanager
 from project.lib.csv_generator import CsvGenerator
 
 
-class TestProject(unittest.TestCase):
+class TestCsvGenerator(unittest.TestCase):
 
     def setUp(self):
         self.csv_generator = CsvGenerator()
@@ -74,7 +76,6 @@ class TestProject(unittest.TestCase):
     def test_project_should_generate_leads_null_file(self):
 
         res = self.csv_generator.generate_leads_file(1, None)
-        print(res)
         assert res is not None
         for file_name in os.listdir('.'):
             if file_name.endswith('.csv'):
@@ -163,4 +164,4 @@ def captured_output():
 
 
 if __name__ == '__main__':
-    unittest.main()
+    nose.run()

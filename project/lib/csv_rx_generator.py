@@ -85,7 +85,7 @@ class CsvRxGenerator(cmdln.Cmdln):
 
         outfile_writer.writerow(header)
 
-        bulks = CsvRxGenerator.get_bulks(bulk_size, total)
+        bulks = get_bulks(bulk_size, total)
 
         progress_bar = Bar('Generating', fill='#', suffix='%(percent)d%% - %(elapsed_td)s', max=total)
         Observable.from_(bulks).flat_map(
@@ -94,16 +94,16 @@ class CsvRxGenerator(cmdln.Cmdln):
                     on_completed=lambda: close_file(outfile, progress_bar),
                     on_error=lambda err: print_thread_close_file("on_error: {}".format(err), outfile, progress_bar))
 
-    @staticmethod
-    def get_bulks(bulk_size, total):
-        bulks = []
-        num_of_itr = (total / bulk_size)
-        for i in range(0, num_of_itr):
-            bulks.append(bulk_size)
-        mod = total % bulk_size
-        bulks.append(mod)
-        log.debug('bulks: %s' % bulks)
-        return bulks
+
+def get_bulks(bulk_size, total):
+    bulks = []
+    num_of_itr = (total / bulk_size)
+    for i in range(0, num_of_itr):
+        bulks.append(bulk_size)
+    mod = total % bulk_size
+    bulks.append(mod)
+    log.debug('bulks: %s' % bulks)
+    return bulks
 
 
 def error_print(*args, **kwargs):

@@ -61,7 +61,7 @@ class CsvGenerator(cmdln.Cmdln):
                 return CsvGenerator.generate_leads_file(total, outfile, int(bulk))
         except (OSError, IOError) as e:
             eprint('Path is invalid: %s' % file_path)
-            log.debug("Failed to open file %s:" % file_path, e)
+            log.debug("Failed to open file %s:" % file_path)
             return None
 
     @staticmethod

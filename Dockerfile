@@ -9,4 +9,4 @@ COPY . /usr/src/app
 #COPY requirements.txt ./
 RUN pip install --upgrade pip && python setup.py install
 
-ENTRYPOINT [ "csv-gen" ]
+ENTRYPOINT [ "csv-rx-gen" ]

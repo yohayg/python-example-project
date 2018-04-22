@@ -141,7 +141,7 @@ setup(
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['Faker==0.8.13', 'mockito==1.0.12', 'nose==1.3.7',
-                      'tornado==5.0.2', 'cmdln==2.0.0', 'progress==1.3'],  # Optional
+                      'tornado==5.0.2', 'cmdln==2.0.0', 'progress==1.3', 'Rx==1.6.1', 'futures==3.2.0'],  # Optional
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"
@@ -183,7 +183,8 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'csv-gen=project.lib.csv_generator:main'
+            'csv-gen=project.lib.csv_generator:main',
+            'csv-rx-gen=project.lib.csv_rx_generator:main',
         ],
     },
 

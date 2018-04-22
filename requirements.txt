@@ -1,1 +1,8 @@
--e .
+Faker==0.8.13
+mockito==1.0.12
+nose==1.3.7
+tornado==5.0.2
+cmdln==2.0.0
+progress==1.3
+Rx==1.6.1
+futures==3.2.0

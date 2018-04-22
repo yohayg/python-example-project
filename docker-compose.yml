@@ -1,11 +1,11 @@
 version: "3.2"
 services:
-  csv-gen:
+  csv-rx-gen:
     build: .
     volumes:
     - .:/usr/src/app
 
-  csv-gen-dev:
+  csv-rx-gen-dev:
     build: .
     volumes:
       - type: bind
@@ -15,6 +15,6 @@ services:
     build: test
     volumes:
       - type: bind
-        source: .
+        source: ../
         target: /usr/src/app
     command: ["coverage", "run", "setup.py", "test"]

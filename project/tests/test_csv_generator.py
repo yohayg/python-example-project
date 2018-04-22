@@ -49,7 +49,6 @@ class TestCsvGenerator(unittest.TestCase):
             pass
 
     def test_project_should_generate_leads_file_main_method(self):
-        Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
 
         file_name = "2.csv"
         sys.argv = ["generate", "generate", "-r", "2", "-o", file_name, "-b", "1000", "--verbose"]
@@ -95,13 +94,13 @@ class TestCsvGenerator(unittest.TestCase):
     def test_project_should_generate_leads_invalid_path(self):
 
         Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
-        opts = Options('/neverland/2.csv', '2', False, '100')
+        opts = Options('/never_land/2.csv', '2', False, '100')
 
         with captured_output() as (out, err):
             res = self.csv_generator.do_generate_leads(None, opts, [])
             print(res)
             output = err.getvalue().strip()
-            assert output.split('\n')[0] == 'Path is invalid: /neverland/2.csv'
+            assert output.split('\n')[0] == 'Path is invalid: /never_land/2.csv'
 
     def test_project_should_generate_leads_invalid_rows(self):
 

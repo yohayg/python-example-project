@@ -68,7 +68,7 @@ class CsvRxGenerator(cmdln.Cmdln):
             outfile = open(file_path, 'w+')
             log.debug("Opened file %s: " % outfile.name)
             CsvRxGenerator.generate_leads_file(total, outfile, int(bulk))
-        except (OSError, IOError) as e:
+        except (OSError, IOError):
             error_print('Path is invalid: %s' % file_path)
             log.error("Failed to open file {}:".format(file_path))
             return None

@@ -18,7 +18,6 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-
 # def my_test_suite():
 #     test_loader = unittest.TestLoader()
 #     test_suite = test_loader.discover('project.tests', pattern='test_*.py')
@@ -137,11 +136,12 @@ setup(
     # Any package you put here will be installed by pip when your project is
     # installed, so they must be valid existing projects.
     #
-    setup_requires=['nose', 'coveralls'],
+    setup_requires=['nose', 'coveralls', 'celery==4.0.2'],
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['Faker==0.8.13', 'mockito==1.0.12', 'nose==1.3.7',
-                      'tornado==5.0.2', 'cmdln==2.0.0', 'progress==1.3', 'Rx==1.6.1', 'futures==3.2.0'],  # Optional
+                      'tornado==5.0.2', 'cmdln==2.0.0', 'progress==1.3',
+                      'Rx==1.6.1', 'futures==3.2.0', 'celery==4.0.2', 'pika==0.11.2'],  # Optional
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"
@@ -152,7 +152,7 @@ setup(
     # Similar to `install_requires` above, these must be valid existing
     # projects.
     extras_require={  # Optional
-        'dev': ['Faker==0.8.13', 'mockito==1.0.12', 'nose==1.3.7', 'tornado==5.0.2', 'cmdln==2.0.0'],
+        'dev': ['Faker==0.8.13', 'mockito==1.0.12', 'nose==1.3.7', 'tornado==5.0.2', 'cmdln==2.0.0', 'celery==4.0.2', 'pika==0.11.2'],
         'test': ['nose', 'mockito', 'Faker', 'coveralls']
     },
 

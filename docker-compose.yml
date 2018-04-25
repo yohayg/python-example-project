@@ -11,6 +11,7 @@ services:
       - type: bind
         source: .
         target: /usr/src/app
+
   test:
     build: test
     volumes:
@@ -18,3 +19,37 @@ services:
         source: .
         target: /usr/src/app
     command: ["coverage", "run", "setup.py", "nosetests"]
+
+  rabbit.docker:
+    image: rabbitmq:latest
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=mypass
+    ports:
+      - "5672:5672"
+    networks:
+      - celery_nw
+
+  worker.docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+#    links:
+#      - rabbit.docker
+    depends_on:
+      - rabbit.docker
+    networks:
+      - celery_nw
+
+networks:
+   celery_nw:
+    driver: bridge
+    ipam:
+     config:
+      - subnet: 172.27.0.0/24
+
+      parameters = pika.ConnectionParameters('132.45.23.14',5672,'/',credentials)
+
+      channel.basic_publish(exchange='', routing_key='hello', body='Hello World!')

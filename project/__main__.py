@@ -1,10 +1,10 @@
 import sys
 
-from lib.csv_generator import CsvGenerator
+from lib.main_command import MainCommand
 
 
 def main():
-    csv_generator = CsvGenerator()
+    csv_generator = MainCommand()
     sys.exit(csv_generator.main())
 
 

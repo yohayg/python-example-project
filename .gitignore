@@ -6,3 +6,5 @@ dist
 build
 .eggs
 *.egg-info
+.cache
+python-generator

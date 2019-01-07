@@ -184,8 +184,7 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'csv-gen=project.lib.csv_generator:main',
-            'csv-rx-gen=project.lib.csv_rx_generator:main',
+            'csv-gen=project.lib.main_command:main'
         ],
     },
 

@@ -20,12 +20,30 @@ Clone:
     
 Run:
 
-    docker-compose run csv-gen -r 1000 -o 1000.csv -b 1000 --verbose
+    docker-compose run csv-gen rx -r 1000 -o 1000.csv -b 1000 --verbose
 Or install:
     
     pip install -e .
-    csv-gen generate -r 1000 -o 1000.csv -b 1000 --verbose
+    csv-gen rx -r 1000 -o 1000.csv -b 1000 --verbose
+    
+    
+    python project rx -o 100000.csv -r 100000 -b 1000
 
+Test:
+    
+    python setup.py nosetests
+  or:
+  
+    nosetests project
+
+Coveralls:
+  
+    coverage run setup.py nosetests 
+    
+  or:
+  
+    coverage run project/tests 
+    
 
 ## Example
 

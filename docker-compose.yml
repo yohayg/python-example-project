@@ -1,11 +1,11 @@
 version: "3.2"
 services:
-  csv-rx-gen:
+  csv-gen:
     build: .
     volumes:
     - .:/usr/src/app
 
-  csv-rx-gen-dev:
+  csv-gen-dev:
     build: .
     volumes:
       - type: bind
@@ -26,6 +26,7 @@ services:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=mypass
     ports:
+
       - "5672:5672"
     networks:
       - celery_nw
@@ -50,6 +51,6 @@ networks:
      config:
       - subnet: 172.27.0.0/24
 
-      parameters = pika.ConnectionParameters('132.45.23.14',5672,'/',credentials)
-
-      channel.basic_publish(exchange='', routing_key='hello', body='Hello World!')
+#      parameters = pika.ConnectionParameters('132.45.23.14',5672,'/',credentials)
+#
+#      channel.basic_publish(exchange='', routing_key='hello', body='Hello World!')

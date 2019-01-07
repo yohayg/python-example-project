@@ -1,4 +1,5 @@
 [run]
 include =
     */lib/csv_generator.py
+    */lib/main_command.py
     */lib/csv_rx_generator.py

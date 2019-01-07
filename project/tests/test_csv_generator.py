@@ -52,88 +52,26 @@ class TestCsvGenerator(unittest.TestCase):
 
         file_name = "2.csv"
         sys.argv = ["generate", "generate", "-r", "2", "-o", file_name, "-b", "1000", "--verbose"]
-        res = self.csv_generator.main()
-        assert res is None
-        os.path.isfile(file_name)
-        try:
-            os.remove(os.path.abspath(file_name))
-        except OSError:
-            pass
-
-    def test_project_should_generate_leads_file_null_response(self):
-        Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
-        file_name = '2.csv'
-        opts = Options(file_name, '2', True, '100')
-
-        res = self.csv_generator.do_generate_leads(None, opts, [])
-        assert res is None
-        try:
-            os.remove(os.path.abspath(file_name))
-        except OSError:
-            pass
-
-    def test_project_should_generate_leads_null_file(self):
-
-        res = self.csv_generator.generate_leads_file(1, None)
-        assert res is not None
-        for file_name in os.listdir('.'):
-            if file_name.endswith('.csv'):
-                assert False
-
-    def test_project_should_generate_leads_empty_path(self):
-
-        Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
-        opts = Options('', '2', False, '100')
-
-        with captured_output() as (out, err):
-            res = self.csv_generator.do_generate_leads(None, opts, [])
-            print(res)
-            output = err.getvalue().strip()
-            assert output == 'Path is missing or invalid'
-
-    def test_project_should_generate_leads_invalid_path(self):
-
-        Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
-        opts = Options('/never_land/2.csv', '2', False, '100')
-
-        with captured_output() as (out, err):
-            res = self.csv_generator.do_generate_leads(None, opts, [])
-            print(res)
-            output = err.getvalue().strip()
-            assert output.split('\n')[0] == 'Path is invalid: /never_land/2.csv'
-
-    def test_project_should_generate_leads_invalid_rows(self):
-
-        Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
-        opts = Options('2.csv', 'ss', False, '100')
-
-        with captured_output() as (out, err):
-            res = self.csv_generator.do_generate_leads(None, opts, [])
-            print(res)
-            output = err.getvalue().strip()
-            assert output == 'Number of rows is invalid'
-
-    def test_project_should_generate_leads_invalid_bulk(self):
-
-        Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
-        opts = Options('2.csv', '2', False, 'ss')
-
-        with captured_output() as (out, err):
-            res = self.csv_generator.do_generate_leads(None, opts, [])
-            print(res)
-            output = err.getvalue().strip()
-            assert output == 'Number of bulk is invalid'
+        with open(os.path.abspath("2.csv"), "w+") as out_file:
+            res = self.csv_generator.generate_leads_file(2, out_file, 1000)
+            assert res is None
+            os.path.isfile(file_name)
+            try:
+                os.remove(os.path.abspath(file_name))
+            except OSError:
+                pass
 
     def test_project_should_generate_leads_filename(self):
         lines = 12
         filename = str(lines) + '.csv'
 
-        Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
-        opts = Options(filename, str(lines), True, '100')
-
-        self.csv_generator.do_generate_leads(None, opts, [])
+        # Options = collections.namedtuple('Options', ['output', 'rows', 'verbose', 'bulk'])
+        # opts = Options(filename, str(lines), True, '100')
+        with open(os.path.abspath(filename), "w+") as res:
+            self.csv_generator.generate_leads_file(12, res, 100)
 
         with open(os.path.abspath(filename)) as res:
+
             reader = csv.DictReader(res, delimiter=',')
             header = reader.fieldnames
             assert header[0] == 'Email'

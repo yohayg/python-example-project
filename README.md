@@ -41,11 +41,6 @@ This project is a python command-line application example of generating data to 
   
     coverage run project/tests 
     
-
-## Example
-
-![Alt Text](https://raw.githubusercontent.com/yohayg/python-generator/master/docs/images/demo.gif)
-    
 ## License
 
 This project is licensed under [MIT license](http://opensource.org/licenses/MIT).    

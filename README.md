@@ -14,29 +14,27 @@ This project is a python command-line application example of generating data to 
 
 ## Running the Application
 
-Clone:
+#### Clone:
 
     git clone https://github.com/yohayg/python-example-project.git
     
-Run:
-
-    docker-compose run csv-gen rx -r 1000 -o 1000.csv -b 1000 --verbose
-Or install:
+#### Run:
     
     pip install -e .
     csv-gen rx -r 1000 -o 1000.csv -b 1000 --verbose
     
+##### Or:
     
     python project rx -o 100000.csv -r 100000 -b 1000
 
-Test:
+#### Test:
     
     python setup.py nosetests
-  or:
+##### or:
   
     nosetests project
 
-Coveralls:
+#### Coveralls:
   
     coverage run setup.py nosetests 
     

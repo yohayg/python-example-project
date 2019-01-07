@@ -2,7 +2,6 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/yohayg/python-generator/badge.svg)](https://coveralls.io/github/yohayg/python-generator)
 [![Build Status](https://travis-ci.org/yohayg/python-generator.svg?branch=master)](https://travis-ci.org/yohayg/python-generator)
-[![Dependency Status](https://gemnasium.com/badges/github.com/yohayg/python-generator.svg)](https://gemnasium.com/github.com/yohayg/python-generator)
 
 ## Introduction
 

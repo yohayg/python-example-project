@@ -15,6 +15,7 @@ executor = ProcessPoolExecutor(mp.cpu_count() + 2)
 
 class CsvCeleryGenerator:
 
+    # For executing hte celery generator you will need to do the following:
     # 1. celery -A project.lib.celery_app:app  worker --loglevel=debug
     # 2. python project/lib/receive.py
     # 3. python project/lib/main_command.py ce -o '12.csv' -r 11 -b 2 --verbose

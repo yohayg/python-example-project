@@ -7,10 +7,6 @@
 
 This project is a python command-line application example of generating data to csv.
 
-## Prerequisites
-
-* [docker](https://www.docker.com/)
-
 ## Running the Application
 
 #### Clone:
@@ -19,28 +15,15 @@ This project is a python command-line application example of generating data to 
     
 #### Run:
     
-    pip install -e .
-    csv-gen rx -r 1000 -o 1000.csv -b 1000 --verbose
+    pip install -r requirements.txt
     
-##### Or:
-    
-    python project rx -o 100000.csv -r 100000 -b 1000
+    python -m project mp -o 1000.csv -r 1000 -b 1000 
 
 #### Test:
-    
-    python setup.py nosetests
-##### or:
-  
-    nosetests project
 
-#### Coveralls:
-  
-    coverage run setup.py nosetests 
-    
-  or:
-  
-    coverage run project/tests 
-    
+    pip install -r test/requirements.txt
+    python project/tests
+
 ## License
 
 This project is licensed under [MIT license](http://opensource.org/licenses/MIT).    

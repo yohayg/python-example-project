@@ -6,6 +6,6 @@ cmdln==2.0.0
 progress==1.3
 Rx==1.6.1
 futures==3.2.0
-celery==4.0.2
+celery==4.2.1
 pika==0.11.2
 futures==3.2.0; python_version == "2.7"

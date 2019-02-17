@@ -10,15 +10,14 @@ log = logging.getLogger("CsvMpGenerator")
 
 
 @app.task(ignore_result=False)
-def generate_task(index, bulk):
+def generate_task(bulk):
     log.debug('long time task begins')
 
-    result = []
+    result = generate_data(bulk, None)
 
-    for i in range(bulk):
-        result.append(generate_data(bulk, index))
+    print result
 
-    print("%d, %s" % (index, result))
+    print("%s" % result)
     log.debug("putting in queue args: %s result: %s" % (bulk, result))
     parameters = pika.ConnectionParameters('localhost', 5672, '/')
     connection = pika.BlockingConnection(parameters)

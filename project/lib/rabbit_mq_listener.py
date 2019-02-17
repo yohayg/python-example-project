@@ -8,11 +8,13 @@ parameters = pika.ConnectionParameters('localhost', 5672, '/')
 
 queue_name = 'data_queue'
 
-total = 11
-bulk = 2
-count = 0
 outfile = open('test.csv', 'w+')
 outfile_writer = csv.writer(outfile, delimiter=',')
+connection = pika.BlockingConnection(parameters)
+channel = connection.channel()
+channel.queue_declare(queue=queue_name)
+total = 100
+count = 0
 
 
 class RabbitMqListener:
@@ -20,37 +22,29 @@ class RabbitMqListener:
     def __init__(self):
         pass
 
-    @staticmethod
-    def get_connection():
-        connection = pika.BlockingConnection(parameters)
-        channel = connection.channel()
-        channel.queue_declare(queue=queue_name)
-        return connection
 
-    def start_consuming(self):
-        channel = self.get_connection().channel()
-        channel.basic_consume(callback,
-                              queue=queue_name,
-                              no_ack=True)
+def start_consuming():
 
-        print(' [*] Waiting for messages')
+    channel.basic_consume(callback,
+                          queue=queue_name,
+                          no_ack=True)
 
-        channel.start_consuming()
+    print(' [*] Waiting for messages')
 
-        print(' [*] Waiting for messages')
+    channel.start_consuming()
+
+    print(' [*] Waiting for messages')
 
 
 def callback(ch, method, properties, body):
     json_loads = json.loads(body)
-
-    global count
-    count = count + 1
-    print("%d %d" % (count, total))
     results = json_loads['results']
     print(" [x] Received %r" % results)
     outfile_writer.writerows(results)
-    if (count * bulk) >= total:
-        print('done')
+
+    global count
+    count = count + len(results)
+    if count >= total:
         outfile.close()
         channel.stop_consuming()
         connection.close()

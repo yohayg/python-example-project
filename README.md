@@ -13,11 +13,26 @@ This project is a python command-line application example of generating data to 
 
     git clone https://github.com/yohayg/python-example-project.git
     
-#### Run:
+#### Install:
     
     pip install -r requirements.txt
+
+#### Run:
     
     python -m project mp -o 1000.csv -r 1000 -b 1000 
+Or:
+    
+    python -m project rx -o 1000.csv -r 1000 -b 1000
+Or:
+
+    python -m project se -o 1000.csv -r 1000 -b 1000
+Or:
+
+    docker run -d --hostname my-rabbit --name some-rabbit -p 5672:5672 -p 15672:15672 rabbitmq:3
+    celery -A project.lib.celery_app:app  worker --loglevel=debug -B -l info
+    python -m project.lib.rabbit_mq_listener
+    python -m project ce  -r 100 -b 10
+
 
 #### Test:
 

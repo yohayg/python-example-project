@@ -1,5 +1,6 @@
 import logging
 import multiprocessing as mp
+import time
 
 from project.lib.data_generator import generate_data
 from project.lib.queue_listener import listen
@@ -38,8 +39,11 @@ class CsvMpGenerator:
         for job in jobs:
             job.get()
 
-        # now we are done, kill the listener
+        # now we are done, kill the listener with a wait
         q.put('kill')
+
+        time.sleep(1)
+
         pool.close()
 
 

@@ -29,7 +29,8 @@ def generate_data(bulk, index):
     log.debug('long time task begins')
     result = []
     fake = Faker()
-    fake.seed_instance(index)
+    if index is not None:
+        fake.seed_instance(index)
     for _ in range(bulk):
         line = DataGenerator.get_fake_data(fake)
         result.append(line)

@@ -62,7 +62,7 @@ class MainCommand(cmdln.Cmdln):
             if sub_cmd == 'mp':
                 CsvMpGenerator.generate_leads_file(total, file_path, int(bulk))
             if sub_cmd == 'ce':
-                CsvCeleryGenerator.generate_leads_file(total, file_path, int(bulk))
+                CsvCeleryGenerator.generate_leads_file(total, int(bulk))
             if sub_cmd == 'rx':
                 outfile = open(file_path, 'w+')
                 log.debug("Opened file %s: " % outfile.name)
